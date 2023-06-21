@@ -28,4 +28,4 @@ localization/*qm
 resources/skins/*/*.map
 
 # Build directory.
-build-dir/
+build*

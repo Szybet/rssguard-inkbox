@@ -91,7 +91,8 @@ void FeedMessageViewer::loadSize() {
   const Settings* settings = qApp->settings();
 
   // Restore offsets of splitters.
-  m_feedSplitter->setSizes(toList<int>(settings->value(GROUP(GUI), SETTING(GUI::SplitterFeeds))));
+  // Reader - No
+  // m_feedSplitter->setSizes(toList<int>(settings->value(GROUP(GUI), SETTING(GUI::SplitterFeeds))));
 
   if (settings->value(GROUP(GUI), SETTING(GUI::SplitterMessagesIsVertical)).toBool()) {
     m_messageSplitter->setSizes(toList<int>(settings->value(GROUP(GUI), SETTING(GUI::SplitterMessagesVertical))));

@@ -29,6 +29,8 @@
 void MessagePreviewer::createConnections() {
   installEventFilter(this);
 
+  // Ereader
+  // Well this can't be commented
   connect(m_actionMarkRead =
             m_toolBar->addAction(qApp->icons()->fromTheme(QSL("mail-mark-read")), tr("Mark article read")),
           &QAction::triggered,
@@ -44,6 +46,10 @@ void MessagePreviewer::createConnections() {
           &QAction::triggered,
           this,
           &MessagePreviewer::switchMessageImportance);
+
+  // Ereader
+  m_toolBar->setVisible(false);
+  m_toolBar->setFixedSize(0, 0);
 }
 
 MessagePreviewer::MessagePreviewer(QWidget* parent)

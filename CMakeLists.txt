@@ -123,7 +123,6 @@ set(QT5_MIN_VERSION 5.12.0)
 set(QT_COMPONENTS
   Core
   Gui
-  LinguistTools
   Network
   Qml
   Sql
@@ -171,11 +170,11 @@ else()
     endmacro()
 
     macro(qt_create_translation)
-      qt5_create_translation(${ARGN})
+
     endmacro()
 
     macro(qt_add_translation)
-      qt5_add_translation(${ARGN})
+
     endmacro()
   endif()
 endif()

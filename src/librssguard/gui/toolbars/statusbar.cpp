@@ -38,6 +38,9 @@ StatusBar::StatusBar(QWidget* parent) : QStatusBar(parent) {
   m_barProgressDownloadAction->setObjectName(QSL("m_barProgressDownloadAction"));
 
   m_barProgressDownload->installEventFilter(this);
+
+  // Ereader - not sure
+  this->setVisible(false);
 }
 
 StatusBar::~StatusBar() {

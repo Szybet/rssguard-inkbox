@@ -521,6 +521,7 @@ qt_wrap_ui(SOURCES ${UI_FILES})
 # Bundle resources.
 qt_add_resources(SOURCES ${CMAKE_SOURCE_DIR}/resources/sql.qrc)
 qt_add_resources(SOURCES ${CMAKE_SOURCE_DIR}/resources/rssguard.qrc)
+qt_add_resources(SOURCES ${CMAKE_SOURCE_DIR}/resources/ereader/ereader.qrc)
 
 # Process OAuth service secrets.
 set(FEEDLY_CLIENT_ID "" CACHE STRING "Feedly client ID")

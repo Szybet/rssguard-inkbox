@@ -37,6 +37,8 @@ class RSSGUARD_DLLSPEC FeedMessageViewer : public TabContent {
 
     bool areToolBarsEnabled() const;
     bool areListHeadersEnabled() const;
+    QSplitter* m_feedSplitter;
+    QSplitter* m_messageSplitter;
 
   public slots:
     void saveSize();
@@ -84,8 +86,6 @@ class RSSGUARD_DLLSPEC FeedMessageViewer : public TabContent {
     bool m_articleViewerAlwaysVisible;
     FeedsToolBar* m_toolBarFeeds;
     MessagesToolBar* m_toolBarMessages;
-    QSplitter* m_feedSplitter;
-    QSplitter* m_messageSplitter;
     MessagesView* m_messagesView;
     FeedsView* m_feedsView;
     QWidget* m_feedsWidget;

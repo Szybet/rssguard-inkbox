@@ -104,6 +104,12 @@ int main(int argc, char* argv[]) {
 #endif
 #endif
 
+  // Ereader
+  QFile stylesheetFile(":/other/eink.qss");
+  stylesheetFile.open(QFile::ReadOnly);
+  qApp->setStyleSheet(stylesheetFile.readAll());
+  stylesheetFile.close();
+  qDebug() << "Applied stylesheet for ereader";
   FormMain main_window;
 
   qApp->loadDynamicShortcuts();

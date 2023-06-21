@@ -102,6 +102,9 @@ class WebBrowser : public TabContent {
     QAction* m_actionReadabilePage;
     QList<Message> m_messages;
     QPointer<RootItem> m_root;
+    // Ereader
+    QSize previousSize;
+    QSize previousLocation;
 };
 
 inline WebBrowser* WebBrowser::webBrowser() const {

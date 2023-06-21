@@ -15,7 +15,13 @@
 #include "network-web/networkfactory.h"
 #include "network-web/readability.h"
 #include "network-web/webfactory.h"
+#include "qscreen.h"
+#include "qsplitter.h"
 #include "services/abstract/serviceroot.h"
+#include "gui/feedmessageviewer.h"
+#include "gui/messagesview.h"
+#include "gui/messagepreviewer.h"
+#include "gui/feedsview.h"
 
 #include <QKeyEvent>
 #include <QScrollBar>
@@ -311,10 +317,41 @@ void WebBrowser::initializeLayout() {
   m_toolBar->addAction(m_actionForward);
   m_toolBar->addAction(m_actionReload);
   m_toolBar->addAction(m_actionStop);
-  m_toolBar->addAction(m_actionOpenInSystemBrowser);
-  m_toolBar->addAction(m_actionReadabilePage);
 
-  m_toolBar->addAction(m_btnDiscoverFeedsAction);
+  // Ereader
+  QIcon icon = QIcon("://resources/fullscreen.svg");
+  QAction *fullScreenAction = new QAction(icon, tr(""), this);
+  connect(fullScreenAction, &QAction::triggered, this, [fullScreenAction, this]() {
+      // Hacky...
+      // L M T H
+      /*
+      QKeyEvent* l = new QKeyEvent (QEvent::KeyPress,Qt::Key_L,Qt::NoModifier,"l");
+      QKeyEvent* m = new QKeyEvent (QEvent::KeyPress,Qt::Key_M,Qt::NoModifier,"m");
+      QKeyEvent* t = new QKeyEvent (QEvent::KeyPress,Qt::Key_T,Qt::NoModifier,"t");
+      QKeyEvent* h = new QKeyEvent (QEvent::KeyPress,Qt::Key_H,Qt::NoModifier,"h");
+
+      qApp->postEvent((QObject*)this,(QEvent *)l);
+      qApp->postEvent((QObject*)this,(QEvent *)m);
+      qApp->postEvent((QObject*)this,(QEvent *)t);
+      qApp->postEvent((QObject*)this,(QEvent *)h);
+
+      previousLocation = QSize(parentWidget()->x(), parentWidget()->y());
+      previousSize = parentWidget()->size();
+
+      parentWidget()->setFixedSize(qApp->screens().at(0)->size());
+      */
+      // Nothing else does not work... cursed
+      qApp->mainForm()->tabWidget()->addNewspaperView(m_root, m_messages);
+  });
+  fullScreenAction->setIconVisibleInMenu(true);
+  m_toolBar->addAction(fullScreenAction);
+
+
+  // Ereader
+  // m_toolBar->addAction(m_actionOpenInSystemBrowser);
+  // m_toolBar->addAction(m_actionReadabilePage);
+
+  // m_toolBar->addAction(m_btnDiscoverFeedsAction);
   m_txtLocationAction = m_toolBar->addWidget(m_txtLocation);
 
   m_loadingProgress = new QProgressBar(this);

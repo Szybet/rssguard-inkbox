@@ -27,11 +27,6 @@ if(BUILD_WITH_QT6)
     OPTIONS "-compress"
   )
 else()
-  qt_add_translation(QM_FILES
-    ${TS_FILES}
-    OPTIONS "-compress"
-  )
-
   add_custom_target(rssguard_lrelease DEPENDS ${QM_FILES})
   add_dependencies(rssguard rssguard_lrelease)
 endif()

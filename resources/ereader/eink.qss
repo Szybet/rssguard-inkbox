@@ -1,0 +1,44 @@
+
+QScrollBar {
+    background: white;
+    border: 3px solid lightGrey;
+}
+
+QScrollBar:vertical {
+    width: 20px
+}
+
+QScrollBar:horizontal {
+    height: 20px
+}
+
+QScrollBar::handle {
+    background: black;
+    min-width: 15px;
+    min-height: 15px;
+    border: 3px;
+}
+
+QTreeView::branch:has-siblings:!adjoins-item {
+    border-image: url(://eink/none) 0;
+}
+
+QTreeView::branch:has-siblings:adjoins-item {
+    border-image: url(://eink/none) 0;
+}
+
+QTreeView::branch:!has-children:!has-siblings:adjoins-item {
+    border-image: url(://eink/none) 0;
+}
+
+QTreeView::branch:has-children:!has-siblings:closed,
+QTreeView::branch:closed:has-children:has-siblings {
+        border-image: none;
+        image: url(://eink/none);
+}
+
+QTreeView::branch:open:has-children:!has-siblings,
+QTreeView::branch:open:has-children:has-siblings  {
+        border-image: none;
+        image: url(://eink/none);
+}
