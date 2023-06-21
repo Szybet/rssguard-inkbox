@@ -1,0 +1,1 @@
+libQt5Multimedia libraries are here only for backwards compability. 2.1 will add them officially to InkBox, so they won't be needed here

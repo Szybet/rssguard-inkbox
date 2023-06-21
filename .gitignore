@@ -29,3 +29,13 @@ resources/skins/*/*.map
 
 # Build directory.
 build*
+
+.qtc_clangd
+
+# Inkbox user apps
+*.isa
+*.isa.dgst
+inkbox_userapp/rssguard/app-bin/*.bin
+inkbox_userapp/rssguard/app-lib/librssguard.so
+# just to be sure...
+*.pem

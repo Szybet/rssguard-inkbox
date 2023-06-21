@@ -72,10 +72,13 @@ int main(int argc, char* argv[]) {
   qDebugNN << LOGSEC_CORE << "Instantiated class " << QUOTE_W_SPACE_DOT(application.metaObject()->className());
 
   // Check if another instance is running.
+  // Ereader
+  /*
   if (application.isAlreadyRunning()) {
     qWarningNN << LOGSEC_CORE << "Another instance of the application is already running. Notifying it.";
     return EXIT_FAILURE;
   }
+  */
 
   // Load localization and setup locale before any widget is constructed.
   qApp->localization()->loadActiveLanguage();
