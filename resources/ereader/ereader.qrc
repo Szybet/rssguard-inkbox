@@ -6,7 +6,4 @@
         <file>eink/branch-open.png</file>
         <file>eink/vline.png</file>
     </qresource>
-    <qresource prefix="/other">
-        <file>eink.qss</file>
-    </qresource>
 </RCC>

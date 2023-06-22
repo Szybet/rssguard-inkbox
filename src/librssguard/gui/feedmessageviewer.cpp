@@ -95,7 +95,7 @@ void FeedMessageViewer::loadSize() {
   // m_feedSplitter->setSizes(toList<int>(settings->value(GROUP(GUI), SETTING(GUI::SplitterFeeds))));
 
   if (settings->value(GROUP(GUI), SETTING(GUI::SplitterMessagesIsVertical)).toBool()) {
-    m_messageSplitter->setSizes(toList<int>(settings->value(GROUP(GUI), SETTING(GUI::SplitterMessagesVertical))));
+    // m_messageSplitter->setSizes(toList<int>(settings->value(GROUP(GUI), SETTING(GUI::SplitterMessagesVertical))));
   }
   else {
     switchMessageSplitterOrientation();
@@ -337,7 +337,8 @@ void FeedMessageViewer::initializeViews() {
 
   // Setup message splitter.
   m_messageSplitter->setObjectName(QSL("m_messageSplitter"));
-  m_messageSplitter->setHandleWidth(1);
+  // Ereader
+  m_messageSplitter->setHandleWidth(300);
   m_messageSplitter->setOpaqueResize(true);
   m_messageSplitter->setChildrenCollapsible(false);
   m_messageSplitter->addWidget(m_messagesView);
@@ -352,7 +353,8 @@ void FeedMessageViewer::initializeViews() {
   feed_layout->addWidget(m_feedsView);
 
   // Assemble everything together.
-  m_feedSplitter->setHandleWidth(1);
+  // Ereader
+  m_feedSplitter->setHandleWidth(30);
   m_feedSplitter->setOpaqueResize(true);
   m_feedSplitter->setChildrenCollapsible(false);
   m_feedSplitter->addWidget(m_feedsWidget);

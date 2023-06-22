@@ -8,6 +8,8 @@
 #include "miscellaneous/application.h"
 #include "services/abstract/label.h"
 
+#include <QDebug>
+
 #if defined(Q_OS_WIN)
 #if QT_VERSION_MAJOR == 5
 #include <QtPlatformHeaders/QWindowsWindowFunctions>
@@ -108,12 +110,17 @@ int main(int argc, char* argv[]) {
 #endif
 
   // Ereader
-  QFile stylesheetFile(":/other/eink.qss");
+  // Updating this file requires cmake rerun
+  // Or it has problems over all - don't use qrc with cmake
+  QFile stylesheetFile("/app-misc/eink.qss");
   stylesheetFile.open(QFile::ReadOnly);
-  qApp->setStyleSheet(stylesheetFile.readAll());
+  QString stylesheet = stylesheetFile.readAll();
+  qDebug() << "Style sheet applied from /app-misc/:" << stylesheet;
+  qApp->setStyleSheet(stylesheet);
   stylesheetFile.close();
   qDebug() << "Applied stylesheet for ereader";
   FormMain main_window;
+  main_window.setStyleSheet(stylesheet);
 
   qApp->loadDynamicShortcuts();
   qApp->hideOrShowMainForm();

@@ -1,22 +1,29 @@
-
 QScrollBar {
     background: white;
-    border: 3px solid lightGrey;
+    border: 5px solid lightGrey;
 }
 
 QScrollBar:vertical {
-    width: 20px
+    width: 35px
 }
 
 QScrollBar:horizontal {
-    height: 20px
+    height: 35px
 }
 
 QScrollBar::handle {
     background: black;
-    min-width: 15px;
-    min-height: 15px;
-    border: 3px;
+    min-width: 25px;
+    min-height: 25px;
+    border: 5px;
+}
+
+QScrollBar::add-line {
+    width: 0px;
+}
+
+QScrollBar::sub-line {
+    width: 0px;
 }
 
 QTreeView::branch:has-siblings:!adjoins-item {
@@ -41,4 +48,18 @@ QTreeView::branch:open:has-children:!has-siblings,
 QTreeView::branch:open:has-children:has-siblings  {
         border-image: none;
         image: url(://eink/none);
+}
+
+QSplitter[orientation="1"]::handle {
+        border: 7px solid black;
+        min-width: 50px;
+        max-width: 50px;
+        background: black;
+}
+
+QSplitter[orientation="2"]::handle {
+        border: 7px solid black;
+        min-height: 50px;
+        max-height: 50px;
+        background: black;
 }

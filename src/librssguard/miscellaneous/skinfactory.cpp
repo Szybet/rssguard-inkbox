@@ -189,7 +189,8 @@ void SkinFactory::loadSkinFromData(const Skin& skin) {
 
   if (!skin.m_rawData.isEmpty()) {
     if (qApp->styleSheet().simplified().isEmpty() && use_skin_colors) {
-      qApp->setStyleSheet(skin.m_rawData);
+      // Ereader
+      //qApp->setStyleSheet(skin.m_rawData);
     }
     else {
       qCriticalNN << LOGSEC_GUI

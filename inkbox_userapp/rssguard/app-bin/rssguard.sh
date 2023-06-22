@@ -6,6 +6,8 @@ if [ ! -f "$FILE" ]; then
     cp -r /app-misc/eink-config/* /app-data/
 fi
 
+# Wait for inkbox to exit
+sleep 3
 echo 2 > /sys/class/graphics/fb0/rotate
 echo 2 > /sys/class/graphics/fb0/rotate
 sleep 1
@@ -15,4 +17,4 @@ DEVICE="${DEVICE}" DEVICE_CODENAME="${DEVICE_CODENAME}" QT_FONT_DPI=${QT_FONT_DP
 
 echo 3 > /sys/class/graphics/fb0/rotate
 echo 3 > /sys/class/graphics/fb0/rotate
-sleep 1
+sleep 3
