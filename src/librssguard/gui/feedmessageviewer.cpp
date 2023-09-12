@@ -338,7 +338,7 @@ void FeedMessageViewer::initializeViews() {
   // Setup message splitter.
   m_messageSplitter->setObjectName(QSL("m_messageSplitter"));
   // Ereader
-  m_messageSplitter->setHandleWidth(300);
+  m_messageSplitter->setHandleWidth(20);
   m_messageSplitter->setOpaqueResize(true);
   m_messageSplitter->setChildrenCollapsible(false);
   m_messageSplitter->addWidget(m_messagesView);
@@ -354,7 +354,7 @@ void FeedMessageViewer::initializeViews() {
 
   // Assemble everything together.
   // Ereader
-  m_feedSplitter->setHandleWidth(30);
+  m_feedSplitter->setHandleWidth(20);
   m_feedSplitter->setOpaqueResize(true);
   m_feedSplitter->setChildrenCollapsible(false);
   m_feedSplitter->addWidget(m_feedsWidget);
