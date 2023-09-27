@@ -150,6 +150,7 @@ void WebBrowser::clear(bool also_hide) {
 }
 
 void WebBrowser::loadUrl(const QString& url) {
+  qDebug() << "Entered url:" << url;
   return loadUrl(QUrl::fromUserInput(url));
 }
 

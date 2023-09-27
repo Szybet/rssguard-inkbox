@@ -7,7 +7,7 @@
     "IconPath": "/app-misc/rssguard.png",
     "Name": "rssguard",
     "SupportedDevices": [ "n306" ],
-    "RequiredFeatures": [ 0, 5 ] ,
+    "RequiredFeatures": [ 0, 1, 3, 5, 7, 6 ] ,
     "Version": "4.3.4"
   }
 }

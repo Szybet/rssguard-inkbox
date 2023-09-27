@@ -164,6 +164,11 @@ void Downloader::finished() {
 
     qWarningNN << LOGSEC_NETWORK << "Resolved redirection URL:" << QUOTE_W_SPACE_DOT(redirection_url.toString());
 
+    qDebug() << "lastResolvedUrl" << redirection_url.toString();
+    emit latestUrlgot(redirection_url.toString());
+
+    qDebug() << "parent:" << parent();
+
     request.setUrl(redirection_url);
 
     m_activeReply->deleteLater();

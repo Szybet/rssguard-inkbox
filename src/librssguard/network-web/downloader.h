@@ -72,6 +72,7 @@ class Downloader : public QObject {
   signals:
     void progress(qint64 bytes_received, qint64 bytes_total);
     void completed(const QUrl& url, QNetworkReply::NetworkError status, int http_code, QByteArray contents = {});
+    void latestUrlgot(QString url);
 
   private slots:
 

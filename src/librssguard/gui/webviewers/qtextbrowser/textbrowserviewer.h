@@ -66,6 +66,9 @@ class TextBrowserViewer : public QTextBrowser, public WebViewer {
     virtual void resizeEvent(QResizeEvent* event);
     virtual void wheelEvent(QWheelEvent* event);
 
+  public slots:
+    void latestUrlGet(QString url);
+
   private slots:
     void enableResources(bool enable);
     void openLinkInExternalBrowser();
@@ -124,6 +127,7 @@ class TextBrowserViewer : public QTextBrowser, public WebViewer {
     QScopedPointer<QAction> m_actionDownloadLink;
     QScopedPointer<TextBrowserDocument> m_document;
     QPoint m_lastContextMenuPos;
+    QString latestUrlRed;
 };
 
 #endif // TEXTBROWSERVIEWER_H

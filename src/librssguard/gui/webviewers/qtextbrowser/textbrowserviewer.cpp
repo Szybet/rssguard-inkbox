@@ -54,6 +54,7 @@ TextBrowserViewer::TextBrowserViewer(QWidget* parent)
   connect(m_resourceDownloader.data(), &Downloader::completed, this, &TextBrowserViewer::resourceDownloaded);
   connect(this, &QTextBrowser::anchorClicked, this, &TextBrowserViewer::onAnchorClicked);
   connect(this, QOverload<const QUrl&>::of(&QTextBrowser::highlighted), this, &TextBrowserViewer::linkMouseHighlighted);
+  connect(m_downloader.data(), &Downloader::latestUrlgot, this, &TextBrowserViewer::latestUrlGet); // important m_downloader
 }
 
 QSize TextBrowserViewer::sizeHint() const {
@@ -454,9 +455,31 @@ void TextBrowserViewer::downloadLink() {
   }
 }
 
+void TextBrowserViewer::latestUrlGet(QString url) {
+  qDebug() << "latestUrlGet" << url;
+  latestUrlRed = url;
+}
+
 void TextBrowserViewer::onAnchorClicked(const QUrl& url) {
   if (!url.isEmpty()) {
-    const QUrl resolved_url = (m_currentUrl.isValid() && url.isRelative()) ? m_currentUrl.resolved(url) : url;
+
+    QString lastResolvedUrl = latestUrlRed;
+    qDebug() << "Clicked url:" << url << "current:" << m_currentUrl << "resolved last:" << lastResolvedUrl;
+    // m_currentUrl doesn't match the one in the editor
+
+    qDebug() << "this object" << this;
+    QUrl resolved_url;
+
+    // Html child site?
+    QString str = url.toString();
+    if(str.contains("/") == false && str.contains("http") == false && lastResolvedUrl.endsWith("/") == true) {
+      resolved_url.setUrl(m_currentUrl.toString() + str, QUrl::TolerantMode);
+      qDebug() << "Html child site found";
+    } else {
+      resolved_url = (m_currentUrl.isValid() && url.isRelative()) ? m_currentUrl.resolved(url) : url;
+    }
+    qDebug() << "resolved_url" << resolved_url;
+
     const bool ctrl_pressed = (QGuiApplication::keyboardModifiers() & Qt::KeyboardModifier::ControlModifier) ==
                               Qt::KeyboardModifier::ControlModifier;
 
