@@ -116,7 +116,7 @@ inline WebViewer* WebBrowser::viewer() const {
 }
 
 inline void WebBrowser::setNavigationBarVisible(bool visible) {
-  m_toolBar->setVisible(visible);
+  //m_toolBar->setVisible(visible);
 }
 
 #endif // WEBBROWSER_H

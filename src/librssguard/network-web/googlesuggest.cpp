@@ -63,12 +63,24 @@ bool GoogleSuggest::eventFilter(QObject* object, QEvent* event) {
       case Qt::Key_Enter: {
         consumed = true;
         qDebug() << "GoogleSuggest event filter enter clicked" << editor->text();
-        editor->submit(QSL(GOOGLE_SEARCH_URL).arg(editor->text()));
+        if(editor->text().contains("http") == true) {
+          qDebug() << "Submiting bare link";
+          editor->submit(editor->text());
+        } else {
+          qDebug() << "Submiting google link";
+          editor->submit(QSL(GOOGLE_SEARCH_URL).arg(editor->text()));
+        }
       }
       case Qt::Key_Return: {
         consumed = true;
         qDebug() << "GoogleSuggest event filter enter clicked" << editor->text();
-        editor->submit(QSL(GOOGLE_SEARCH_URL).arg(editor->text()));
+        if(editor->text().contains("http") == true) {
+          qDebug() << "Submiting bare link";
+          editor->submit(editor->text());
+        } else {
+          qDebug() << "Submiting google link";
+          editor->submit(QSL(GOOGLE_SEARCH_URL).arg(editor->text()));
+        }
       }
 
       default:

@@ -192,9 +192,15 @@ void TextBrowserViewer::bindToBrowser(WebBrowser* browser) {
   browser->m_actionReload = new QAction(this);
   browser->m_actionStop = new QAction(this);
 
+  // Ereader: I broke something and those are not enabled any point in time?
   browser->m_actionBack->setEnabled(false);
   browser->m_actionForward->setEnabled(false);
-  browser->m_actionReload->setEnabled(false);
+  browser->m_actionReload->setEnabled(true);
+  connect(browser->m_actionReload, &QAction::triggered, this, [this]() {
+    qDebug() << "Setting latestUsedUrlInFun:" << latestUsedUrlInFun;
+    this->setUrl(this->latestUsedUrlInFun);
+  });
+
   browser->m_actionStop->setEnabled(false);
 }
 
@@ -238,6 +244,7 @@ BlockingResult TextBrowserViewer::blockedWithAdblock(const QUrl& url) {
 }
 
 void TextBrowserViewer::setUrl(const QUrl& url) {
+  latestUsedUrlInFun = url;
   emit loadingStarted();
 
   QString html_str;
@@ -255,8 +262,9 @@ void TextBrowserViewer::setUrl(const QUrl& url) {
     QEventLoop loop;
 
     connect(m_downloader.data(), &Downloader::completed, &loop, &QEventLoop::quit);
-    m_downloader->manipulateData(url.toString(), QNetworkAccessManager::Operation::GetOperation, {}, 5000);
+    m_downloader->manipulateData(url.toString(), QNetworkAccessManager::Operation::GetOperation, {}, 15000);
 
+    // Ereader: increased timeout
     loop.exec();
 
     const auto net_error = m_downloader->lastOutputError();

@@ -108,11 +108,11 @@ endif()
 
 # Global compilation switches.
 option(BUILD_WITH_QT6 "Build application with Qt 6" OFF)
-option(USE_WEBENGINE "Use QtWebEngine for embedded web browser" ON)
+option(USE_WEBENGINE "Use QtWebEngine for embedded web browser" OFF)
 option(UPDATE_TRANSLATIONS "Call lupdate to update translation files from source (Qt 6 only)" OFF)
 option(FORCE_COLORED_OUTPUT "Always produce ANSI-colored output (GCC/Clang only)" OFF)
 option(REVISION_FROM_GIT "Get revision using `git rev-parse`" ON)
-option(NO_UPDATE_CHECK "Disable automatic checking for new application updates" OFF)
+option(NO_UPDATE_CHECK "Disable automatic checking for new application updates" ON)
 option(IS_FLATPAK_BUILD "Set to 'ON' when building RSS Guard with Flatpak." OFF)
 option(FORCE_BUNDLE_ICONS "Forcibly bundle icon themes into RSS Guard." OFF)
 

@@ -128,6 +128,7 @@ class TextBrowserViewer : public QTextBrowser, public WebViewer {
     QScopedPointer<TextBrowserDocument> m_document;
     QPoint m_lastContextMenuPos;
     QString latestUrlRed;
+    QUrl latestUsedUrlInFun;
 };
 
 #endif // TEXTBROWSERVIEWER_H
